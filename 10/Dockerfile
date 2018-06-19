@@ -1,3 +1,4 @@
+# Start from debian stretch-slim
 FROM debian:stretch-slim
 
 # Setup JAVA_HOME
@@ -12,7 +13,7 @@ RUN JAVA_VERSION=10 && \
     apt-get update && \
     apt-get -y install wget && \
     cd "/tmp" && \
-    wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}.${JAVA_UPDATE}+${JAVA_BUILD}/${JAVA_PATH}/serverjre-${JAVA_VERSION$
+    wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}.${JAVA_UPDATE}+${JAVA_BUILD}/${JAVA_PATH}/serverjre-${JAVA_VERSION}.${JAVA_UPDATE}_linux-x64_bin.tar.gz" && \
     echo "${JAVA_SHA256_SUM}" "serverjre-${JAVA_VERSION}.${JAVA_UPDATE}_linux-x64_bin.tar.gz" | sha256sum -c - && \
     tar -xzf "serverjre-${JAVA_VERSION}.${JAVA_UPDATE}_linux-x64_bin.tar.gz" && \
     mkdir -p "/usr/lib/jvm" && \
@@ -23,7 +24,7 @@ RUN JAVA_VERSION=10 && \
            "$JAVA_HOME/bin/keytool" \
            "$JAVA_HOME/bin/rmid" \
            "$JAVA_HOME/bin/rmiregistry" \
-           "$JAVA_HOME/conf/security/policy/README.txt" \
+           "$JAVA_HOME/conf/security/policy/README.txt" \            
            "$JAVA_HOME/lib/"*javafx* \
            "$JAVA_HOME/lib/"*jfx* \
            "$JAVA_HOME/lib/jfr" \
