@@ -1,2 +1,2 @@
 # docker-oracle-java
-docker
+docker building minimal debian with oracle jdk. 
